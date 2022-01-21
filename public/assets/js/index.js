@@ -89,3 +89,67 @@ const handleNewNoteView = function () {
     activeNote = {};
     renderActiveNote();
 };
+
+// If notes title or text are empty hide save button
+//otherwise show it.
+const handleRenderSaveBtn = function () {
+    if (!$noteTitle.val().trim() || !$noteText.val().trim()) {
+        $saveNoteBtn.hide();
+    } else {
+        $saveNoteBtn.show();
+    }
+};
+
+//Render the list of note titles
+const renderNoteList = (notes) => {
+    $noteList.empty();
+
+    const noteListItems = [];
+
+    //returns jquery object.
+    const create$li = (text, withDeleteButton = true) => {
+        const $li = $("<li class='list-group-item'>");
+        const $span = $("<span>").text(text);
+        $li.append($span);
+
+        if (withDeleteButton) {
+            const $delBtn = $(
+                "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
+            );
+            $li.append($delBtn);
+        }
+        return $li;
+    };
+
+    if (notes.length === 0) {
+        noteListItems.push(create$li("No saved Notes", false));
+    }
+
+    notes.forEach((note) => {
+        const $li = create$li(note.title).data(note);
+        noteListItems.push($li);
+    });
+
+    $noteList.append(noteListItems);
+};
+
+// Gets notes from  database and renders them to sidebar.
+const getAndRenderNotes = () => {
+    return getNotes().then(renderNoteList);
+};
+
+// update!
+function renderSaveUpdatebtn() {
+    $updateBtn.removeClass('hide')
+}
+
+$saveNoteBtn.on("click", handleNoteSave);
+$noteList.on("click", ".list-group-item", handleNoteView);
+$newNoteBtn.on("click", handleNewNoteView);
+$noteList.on("click", ".delete-note", handleNoteDelete);
+$noteTitle.on("keyup", handleRenderSaveBtn);
+$noteTitle.on("click", renderSaveUpdatebtn);
+$noteText.on("keyup", handleRenderSaveBtn);
+
+// gets initial list of notes
+getAndRenderNotes();
