@@ -83,3 +83,9 @@ const handleNoteView = function () {
     activeNote = $(this).data();
     renderActiveNote();
 };
+
+// Set activenote to an empty object and allow the user to enter a note.
+const handleNewNoteView = function () {
+    activeNote = {};
+    renderActiveNote();
+};
