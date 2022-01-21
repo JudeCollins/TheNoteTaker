@@ -77,3 +77,9 @@ const handleNoteDelete = function (event) {
         renderActiveNote();
     });
 };
+
+// Set activeNote and display it
+const handleNoteView = function () {
+    activeNote = $(this).data();
+    renderActiveNote();
+};
