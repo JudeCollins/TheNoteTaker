@@ -29,3 +29,21 @@ module.exports = function (app) {
             console.log('boo', e, results)
             res.json(results)
         })
+    })
+    // delete all notes.
+    app.delete("/api/notes/:id", function (req, res) {
+        let getId = req.params.id
+
+        for (let index = 0; index < database.length; index++) {
+            if (database[index].id === parseInt(getId)) {
+                database.splice(index, 1);
+            }
+        }
+        fs.writeFile("./db/db.json", JSON.stringify(database), function (err) {
+            if (err) throw err
+        })
+        res.json(database)
+
+    })
+
+}
