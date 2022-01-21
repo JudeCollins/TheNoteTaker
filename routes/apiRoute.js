@@ -21,3 +21,11 @@ module.exports = function (app) {
         res.json(database)
 
     })
+     // update notes as needed
+     app.patch('/api/notes/:id', function (req, res) {
+        if (req.body._id && req.body._id != req.params.id) return res.status(400).json({ error: 'ID in the body is not matching ID in the URL' })
+        delete req.body._id
+        req.collection.updateById(req.params.id, { $set: req.body }, function (e, results) {
+            console.log('boo', e, results)
+            res.json(results)
+        })
