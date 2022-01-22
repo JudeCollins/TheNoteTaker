@@ -39,7 +39,7 @@ This project is license under the MIT license.
 
 # Tests
 
-Please check the application via website. 
+Please check the application via website. https://notetakerpro1.herokuapp.com/
 
 # Questions
 
@@ -47,6 +47,6 @@ If you have any questions about the repo, open an issue or contact Jude Collins 
 
 <img src="./public/assets/images/notetaker photo1.png" width="70%" alt="Note Picture" >
 
-Application: 
-GitHub: 
+Application: https://notetakerpro1.herokuapp.com/
+GitHub: https://github.com/JudeCollins/TheNoteTaker
 
