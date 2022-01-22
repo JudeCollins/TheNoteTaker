@@ -45,7 +45,7 @@ Please check the application via website.
 
 If you have any questions about the repo, open an issue or contact Jude Collins directly Jude.Collins@yahoo.com
 
-<img src="./public/assets/images/noteTaker.JPG" width="70%" alt="Note Picture" >
+<img src="./public/assets/images/notetaker photo1.png" width="70%" alt="Note Picture" >
 
 Application: 
 GitHub: 
